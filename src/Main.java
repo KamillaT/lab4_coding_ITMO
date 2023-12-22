@@ -184,6 +184,12 @@ public class Main {
                 staphan.setAction(Actions.COME);
                 staphan.setEmotion(Emotions.HAPPY);
                 staphan.happeningNow();
+                try {
+                    Dog.Owner.setOwner("");
+                }
+                catch (CustomCheckedException e) {
+                    System.out.println("Ошибка: " + e.getMessage());
+                }
                 Dog.Owner.setOwner(staphan.name);
                 Dog.Owner.getOwner();
                 malysh.setEmotion(Emotions.SAD);
@@ -198,6 +204,7 @@ public class Main {
                 malysh.happeningNow();
                 System.out.println("--------------------------------");
 
+                grandma.setLocation(Locations.VILLAGE);
                 grandma.returnLocation();
                 grandma.setEmotion(Emotions.MISSING);
                 grandma.returnEmotion();
