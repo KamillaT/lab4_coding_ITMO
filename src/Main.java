@@ -18,6 +18,7 @@ public class Main {
         Boy staphan = new Boy("Стафан Альберг", nar, Actions.NOACTION, Emotions.CALM);
         Boy gunilla = new Boy("Гунилла", nar, Actions.NOACTION, Emotions.CALM);
         Boy krister = new Boy("Кристер", nar, Actions.NOACTION, Emotions.CALM);
+        Dog dog = new Dog("Стафан Альберг");
         int mn = 1;
         int mx = 5;
         int num = (int) (((mx - mn) * random()) + mn);
@@ -171,8 +172,9 @@ public class Main {
                 System.out.println("--------------------------------");
 
                 System.out.println(malysh.name + " нашёл собаку и забрал домой");
-                Dog.Owner.setOwner(malysh.name);
-                Dog.Owner.getOwner();
+                dog.setOwner(malysh.name);
+                dog.getOwner();
+                dog.dogAction();
                 System.out.println("--------------------------------");
 
                 staphan.haveDog();
@@ -185,13 +187,14 @@ public class Main {
                 staphan.setEmotion(Emotions.HAPPY);
                 staphan.happeningNow();
                 try {
-                    Dog.Owner.setOwner("");
+                    dog.setOwner("");
                 }
                 catch (CustomCheckedException e) {
                     System.out.println("Ошибка: " + e.getMessage());
                 }
-                Dog.Owner.setOwner(staphan.name);
-                Dog.Owner.getOwner();
+                dog.setOwner(staphan.name);
+                dog.getOwner();
+                dog.dogAction();
                 malysh.setEmotion(Emotions.SAD);
                 malysh.setAction(Actions.CRY);
                 malysh.happeningNow();
@@ -208,7 +211,7 @@ public class Main {
                 grandma.returnLocation();
                 grandma.setEmotion(Emotions.MISSING);
                 grandma.returnEmotion();
-                grandma.checkGarden("всёё пошло по плану");
+                grandma.checkGarden("всё пошло по плану");
                 System.out.println("--------------------------------");
             }
         }

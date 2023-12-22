@@ -1,15 +1,30 @@
 package animals;
 
-import emotions.Emotions;
 import exeptions.CustomCheckedException;
 import actions.Action;
 
 public class Dog {
+    protected String realOwner;
+    
+    public Dog(String realOwner) {
+        this.realOwner = realOwner;
+    }
+    private static String currentOwner;
+    private boolean checkCurrentOwner = true;
 
-    private static String owner = "Стафан Альберг";
-    private static boolean check_current_owner = true;
-
-    public static void dogAction() {
+    public void setOwner(String nameOfOwner) throws CustomCheckedException {
+        if (nameOfOwner == null || nameOfOwner.equals(""))
+            throw new CustomCheckedException("Имя не может быть пустой строкой");
+        checkCurrentOwner = realOwner == nameOfOwner;
+        currentOwner = nameOfOwner;
+    }
+    public void getOwner() {
+        if (checkCurrentOwner)
+            System.out.println(currentOwner + " владелец собаки");
+        else
+            System.out.println(currentOwner + " не настоящий владелец собаки, хоть собака сейчас у этого персонажа");
+    }
+    public void dogAction() {
         // анонимный класс
         Action action = new Action() {
             @Override
@@ -26,25 +41,8 @@ public class Dog {
 
     // статический вложенный класс
     public static class Owner {
-        public static void setOwner(String current_owner) throws CustomCheckedException {
-            if (current_owner == null || current_owner.equals(""))
-                throw new CustomCheckedException("Имя не может быть пустой строкой");
-            String real_owner = "Стафан Альберг";
-            if (real_owner != current_owner)
-                check_current_owner = false;
-            else
-                check_current_owner = true;
-            owner = current_owner;
-        }
-        public static void getOwner() {
-            if (check_current_owner)
-                System.out.println(owner + " владелец собаки");
-            else
-                System.out.println(owner + " не настоящий владелец собаки, хоть собака сейчас у этого персонажа");
-        }
-
         public static String ownerName() {
-            return owner;
+            return currentOwner;
         }
     }
 }
