@@ -1,8 +1,8 @@
 package people;
 
-import exeptions.CustomCheckedException;
+import exceptions.CheckIfThisCouldEverHappen;
 
 public interface MotorMove {
-    void turnOn() throws CustomCheckedException;
+    void turnOn() throws CheckIfThisCouldEverHappen;
     void turnOff();
 }

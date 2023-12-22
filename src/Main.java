@@ -1,7 +1,7 @@
 import actions.*;
 import animals.*;
 import emotions.*;
-import exeptions.CustomCheckedException;
+import exceptions.CheckIfThisCouldEverHappen;
 import locations.Locations;
 import people.*;
 import seasons.Seasons;
@@ -9,7 +9,7 @@ import seasons.Seasons;
 import static java.lang.Math.random;
 
 public class Main {
-    public static void main(String[] args) throws CustomCheckedException {
+    public static void main(String[] args) throws CheckIfThisCouldEverHappen {
         NarratorImpl nar = new NarratorImpl();
         Malysh malysh = new Malysh("Малыш", nar, Actions.NOACTION, Emotions.CALM);
         Granny grandma = new Granny("Бабушка", nar, Actions.NOACTION, Emotions.CALM);
@@ -189,7 +189,7 @@ public class Main {
                 try {
                     dog.setOwner("");
                 }
-                catch (CustomCheckedException e) {
+                catch (CheckIfThisCouldEverHappen e) {
                     System.out.println("Ошибка: " + e.getMessage());
                 }
                 dog.setOwner(staphan.name);

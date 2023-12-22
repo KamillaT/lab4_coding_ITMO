@@ -1,6 +1,6 @@
 package animals;
 
-import exeptions.CustomCheckedException;
+import exceptions.CheckIfThisCouldEverHappen;
 import actions.Action;
 
 public class Dog {
@@ -12,9 +12,9 @@ public class Dog {
     private static String currentOwner;
     private boolean checkCurrentOwner = true;
 
-    public void setOwner(String nameOfOwner) throws CustomCheckedException {
+    public void setOwner(String nameOfOwner) throws CheckIfThisCouldEverHappen {
         if (nameOfOwner == null || nameOfOwner.equals(""))
-            throw new CustomCheckedException("Имя не может быть пустой строкой");
+            throw new CheckIfThisCouldEverHappen("Имя не может быть пустой строкой");
         checkCurrentOwner = realOwner == nameOfOwner;
         currentOwner = nameOfOwner;
     }

@@ -2,7 +2,7 @@ package people;
 
 import actions.*;
 import emotions.*;
-import exeptions.CustomCheckedException;
+import exceptions.CheckIfThisCouldEverHappen;
 import seasons.*;
 import locations.*;
 
@@ -15,7 +15,7 @@ public abstract class Human
     protected String behaviour = "";
     private Locations location;
     private Seasons season;
-    public abstract void happeningNow() throws CustomCheckedException;
+    public abstract void happeningNow() throws CheckIfThisCouldEverHappen;
     public void setAction(Actions action) {
         this.action = action;
     }

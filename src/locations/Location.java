@@ -1,7 +1,7 @@
 package locations;
 
-import exeptions.CustomCheckedException;
+import exceptions.CheckIfThisCouldEverHappen;
 
 public interface Location {
-    void returnLocation() throws CustomCheckedException;
+    void returnLocation() throws CheckIfThisCouldEverHappen;
 }

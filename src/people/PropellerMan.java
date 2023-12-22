@@ -2,7 +2,7 @@ package people;
 
 import actions.*;
 import emotions.*;
-import exeptions.*;
+import exceptions.*;
 import locations.*;
 import seasons.*;
 
@@ -21,9 +21,9 @@ public class PropellerMan extends Human implements Action, Emotion, Location, Se
         private MotorState state = MotorState.OFF;
 
         @Override
-        public void turnOn() throws CustomCheckedException {
+        public void turnOn() {
             if (state == MotorState.ON) {
-                throw new CustomCheckedException("Мотор уже включен");
+                throw new MotorCheck("Мотор уже включен");
             }
             this.state = MotorState.ON;
         }
@@ -31,7 +31,7 @@ public class PropellerMan extends Human implements Action, Emotion, Location, Se
         @Override
         public void turnOff() {
             if (state == MotorState.OFF) {
-                throw new CustomUncheckedException("Мотор уже выключен");
+                throw new MotorCheck("Мотор уже выключен");
             }
             this.state = MotorState.OFF;
         }
@@ -39,7 +39,7 @@ public class PropellerMan extends Human implements Action, Emotion, Location, Se
 
     Motor motor = new Motor();
 
-    public void turnOn() throws CustomCheckedException {
+    public void turnOn() {
         motor.turnOn();
         writer.write(this.name + " включил мотор");
     }
@@ -50,7 +50,7 @@ public class PropellerMan extends Human implements Action, Emotion, Location, Se
     }
 
     @Override
-    public void happeningNow() throws CustomCheckedException {
+    public void happeningNow() throws CheckIfThisCouldEverHappen {
         returnEmotion();
         returnAction();
     }
@@ -82,12 +82,12 @@ public class PropellerMan extends Human implements Action, Emotion, Location, Se
     }
 
     @Override
-    public void returnLocation() throws CustomCheckedException {
+    public void returnLocation() throws CheckIfThisCouldEverHappen {
         Locations location = this.getLocation();
         switch (location) {
             case HOME -> writer.write(name + " дома у своего друга. Он помогает сделать важные дела, чтобы скорее отдохнуть");
-            case VILLAGE -> throw new CustomCheckedException(name + " не бывает в деревне");
-            case SCHOOL -> throw new CustomCheckedException(name + " не посещает школу");
+            case VILLAGE -> throw new CheckIfThisCouldEverHappen(name + " не бывает в деревне");
+            case SCHOOL -> throw new CheckIfThisCouldEverHappen(name + " не посещает школу");
             case ROOF -> writer.write(name + " живёт на крыше");
         }
     }

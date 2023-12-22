@@ -2,7 +2,7 @@ package people;
 
 import actions.*;
 import emotions.*;
-import exeptions.CustomCheckedException;
+import exceptions.CheckIfThisCouldEverHappen;
 import locations.*;
 import seasons.*;
 
@@ -18,7 +18,7 @@ public class Granny extends Human implements Action, Emotion, Location, Season
     }
 
     @Override
-    public void happeningNow() throws CustomCheckedException {
+    public void happeningNow() throws CheckIfThisCouldEverHappen {
         returnEmotion();
         returnAction();
     }
@@ -50,13 +50,13 @@ public class Granny extends Human implements Action, Emotion, Location, Season
     }
 
     @Override
-    public void returnLocation() throws CustomCheckedException {
+    public void returnLocation() throws CheckIfThisCouldEverHappen {
         Locations location = this.getLocation();
         switch (location) {
             case HOME -> writer.write(name + " дома у родных. Наконец-то она проводит с ними много времени");
             case VILLAGE -> writer.write(name + " в деревне. Здесь у неё хватает дел до приезда внука");
-            case SCHOOL -> throw new CustomCheckedException(name + " не учится в школе");
-            case ROOF -> throw new CustomCheckedException(name + " не живёт на крыше");
+            case SCHOOL -> throw new CheckIfThisCouldEverHappen(name + " не учится в школе");
+            case ROOF -> throw new CheckIfThisCouldEverHappen(name + " не живёт на крыше");
         }
     }
 

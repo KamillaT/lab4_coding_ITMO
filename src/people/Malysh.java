@@ -2,7 +2,7 @@ package people;
 
 import actions.*;
 import emotions.*;
-import exeptions.CustomCheckedException;
+import exceptions.CheckIfThisCouldEverHappen;
 import locations.*;
 import seasons.*;
 
@@ -19,7 +19,7 @@ public class Malysh extends Boy implements Action, Emotion, Location, Season {
         super.haveDog();
     }
 
-    public void happeningNow() throws CustomCheckedException {
+    public void happeningNow() throws CheckIfThisCouldEverHappen {
         returnEmotion();
         returnAction();
     }
@@ -51,7 +51,7 @@ public class Malysh extends Boy implements Action, Emotion, Location, Season {
     }
 
     @Override
-    public void returnLocation() throws CustomCheckedException {
+    public void returnLocation() throws CheckIfThisCouldEverHappen {
         Locations location = this.getLocation();
         switch (location) {
             case HOME -> writer.write(name + " дома. Он может отдохнуть, а потом заняться делами");
@@ -59,7 +59,7 @@ public class Malysh extends Boy implements Action, Emotion, Location, Season {
                     "купается в речке, греется на солнце, играет с друзьями");
             case SCHOOL -> writer.write(name + " в школе. Хоть он и не любит ходить туда, но старается хорошо учиться. " +
                     "И, конечно, ждёт каникулы");
-            case ROOF -> throw new CustomCheckedException(name + " не живёт на крыше");
+            case ROOF -> throw new CheckIfThisCouldEverHappen(name + " не живёт на крыше");
         }
     }
 
